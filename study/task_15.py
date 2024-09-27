@@ -29,9 +29,6 @@ class Solution:
 
         return "".join(P)
 
-
-
-
 solution = Solution()
 print(solution.convert('ABCDE', 4), 'ABCED')
 print(solution.convert('PAYPALISHIRING', 3), 'PAHNAPLSIIGYIR')
