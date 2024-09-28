@@ -13,7 +13,7 @@ class Solution:
 
 
                 
-            if p[i] not in ['.', '*']:
+            # if p[i] not in ['.', '*']:
 
 
 
