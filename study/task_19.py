@@ -9,7 +9,7 @@ class Solution:
         for i in range(len(p)):
 
             print(p[i])
-            if i == 0:
+            # if i == 0:
 
 
                 
