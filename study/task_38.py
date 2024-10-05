@@ -51,19 +51,3 @@ for i in [][::-1]:
     expected = ListNode(i, expected)
 
 result = solution.removeNthFromEnd(head, target)
-# while result is not None:
-#     print(result.val, expected.val)
-#     result = result.next
-#     expected = expected.next
-
-# head = None
-# for i in [1,2]:
-#     head = ListNode(i, head)
-# target = 1
-# expected = None
-# for i in [1]:
-#     expected = ListNode(i, expected)
-
-# print(solution.removeNthFromEnd(head, target), '==', expected, ':', head)
-
-
