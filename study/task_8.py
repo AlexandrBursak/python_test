@@ -15,7 +15,7 @@ class Solution:
 
 solution = Solution()
 print(solution.lengthOfLongestSubstring('abcabcbb'))
-print(solution.lengthOfLongestSubstring('bbbbb'))
-print(solution.lengthOfLongestSubstring('pwwkew'))
-print(solution.lengthOfLongestSubstring(' '))
-print(solution.lengthOfLongestSubstring('dvdf'))
+# print(solution.lengthOfLongestSubstring('bbbbb'))
+# print(solution.lengthOfLongestSubstring('pwwkew'))
+# print(solution.lengthOfLongestSubstring(' '))
+# print(solution.lengthOfLongestSubstring('dvdf'))
