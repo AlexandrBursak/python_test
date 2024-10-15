@@ -2,39 +2,28 @@ from typing import List
 from operator import itemgetter
 
 class Solution:
+
+    # take a lot of time
     def smallestChair(self, times: List[List[int]], targetFriend: int) -> int:
         chairs = {}
 
-        sorted_times = sorted(
-            [(arrival, leaving, index) for index, (arrival, leaving) in enumerate(times)]
-        )
+        targetFriendTime = times[targetFriend]
 
-        print(sorted_times)
+        times_sorted = sorted(times, key=itemgetter(0))
 
-        # for i in range(len(sorted_times)):
-            
+        for friend in times_sorted:
+            occupy = len(chairs)
 
+            for chair in chairs:
+                if chairs[chair] <= friend[0]:
+                    chairs[chair] = friend[1]
+                    occupy = chair
+                    break
+            else:
+                chairs[occupy] = friend[1]
 
-    # def smallestChair(self, times: List[List[int]], targetFriend: int) -> int:
-    #     chairs = {}
-
-    #     targetFriendTime = times[targetFriend]
-
-    #     times_sorted = sorted(times, key=itemgetter(0))
-
-    #     for friend in times_sorted:
-    #         occupy = len(chairs)
-
-    #         for chair in chairs:
-    #             if chairs[chair] <= friend[0]:
-    #                 chairs[chair] = friend[1]
-    #                 occupy = chair
-    #                 break
-    #         else:
-    #             chairs[occupy] = friend[1]
-
-    #         if friend == targetFriendTime:
-    #             return occupy
+            if friend == targetFriendTime:
+                return occupy
 
 
 solution = Solution()
