@@ -64,7 +64,7 @@ def need_to_move_queen(table, next_x, next_y):
 	return table, next_x, next_y
 
 
-def validation_of_position(table, next_x, next_y, is_validate, stooper):
+def validation_of_position(table, next_x, next_y, is_validate, stopper):
 
 	while is_validate == False:
 		if table[next_y][next_x] == 'i' and validate(table, next_x, next_y):
@@ -76,21 +76,21 @@ def validation_of_position(table, next_x, next_y, is_validate, stooper):
 		else:
 			table, next_x, next_y = need_to_move_queen(table, next_x, next_y)
 
-		stooper = stooper + 1
+		stopper = stopper + 1
 
-	print('moves: ', stooper)
-	return table, next_x, next_y, is_validate, stooper
+	print('moves: ', stopper)
+	return table, next_x, next_y, is_validate, stopper
 
 
 def init_data(table, is_validate = False, next_x = 0):
-	stooper = 0
+	stopper = 0
 	next_y = find_in_row(table, next_x)
-	return is_validate, stooper, next_x, next_y
+	return is_validate, stopper, next_x, next_y
 
 
 table = get_new_table()
 underlimit_loop = True
-is_validate, stooper, next_x, next_y = init_data(table, is_validate = False, next_x = 0)
+is_validate, stopper, next_x, next_y = init_data(table, is_validate = False, next_x = 0)
 yes_choices = ['yes', 'y']
 no_choices = ['no', 'n']
 
@@ -100,11 +100,11 @@ while underlimit_loop:
 	count = count + 1
 	user_input = input() or 'y'
 	if user_input.lower() in yes_choices:
-		table, next_x, next_y, is_validate, stooper = validation_of_position(table, next_x, next_y, is_validate, stooper)
+		table, next_x, next_y, is_validate, stopper = validation_of_position(table, next_x, next_y, is_validate, stopper)
 		print('Combination #', count)
 		print_table(table)
 
-		is_validate, stooper, next_x, next_y = init_data(table, is_validate = False, next_x = 7)
+		is_validate, stopper, next_x, next_y = init_data(table, is_validate = False, next_x = 7)
 		table, next_x, next_y = need_to_move_queen(table, next_x, next_y)
 		print('and one more combination (yes/no)? yes')
 
