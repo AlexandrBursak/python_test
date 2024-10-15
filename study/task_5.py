@@ -28,7 +28,6 @@ if check == 'n':
 
 masuv = [item for item in masuv if item < k]
 
-pool = True
 masuv_len = len(masuv)
 
 def find_combination(nums, k):
@@ -58,6 +57,6 @@ def find_combination(nums, k):
     return result
 
 
-print(masuv, len(masuv))
-print(k)
+# print(masuv, len(masuv))
+# print(k)
 print(find_combination(masuv, k))
