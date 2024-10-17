@@ -21,10 +21,6 @@ class Solution:
 
 
 
-
-
-
-
 solution = Solution()
 
 nums = [10,10,10,10,10]
