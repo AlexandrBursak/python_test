@@ -1,55 +1,65 @@
 from typing import List, Union
 
 class Solution:
+
+    # Lazzy one but slower
     def parseBoolExpr(self, expression: str) -> bool:
-
-        def convert_to_bool(convert_value):
-            return convert_value == 't'
-
         if len(expression) == 1:
-            return convert_to_bool(expression)
+            return expression == 't'
+        result = expression.replace('t', 'True').replace('f', 'False').replace('!', 'not |').replace('&(', 'all([').replace('|(', 'any([').replace(')', '])')
+        return eval(result)
 
-        def getSubstr(condition: str, expression: str) -> List:
-            current_condition = ''
-            res = None
 
-            i = 0
-            while i < len(expression):
-                count_i = 1
+    # With logic
+    # def parseBoolExpr(self, expression: str) -> bool:
 
-                current_element = expression[i]
+    #     def convert_to_bool(convert_value):
+    #         return convert_value == 't'
 
-                if current_element in ['&', '|', '!']:
-                    current_condition = current_element
-                    current_element, count_i = getSubstr(current_condition, expression[i+2:])
+    #     if len(expression) == 1:
+    #         return convert_to_bool(expression)
 
-                elif current_element == ')':
-                    # line = 't,f,t,f'
-                    if condition == '!':
-                        return not res, i + 3
+    #     def getSubstr(condition: str, expression: str) -> List:
+    #         current_condition = ''
+    #         res = None
+
+    #         i = 0
+    #         while i < len(expression):
+    #             count_i = 1
+
+    #             current_element = expression[i]
+
+    #             if current_element in ['&', '|', '!']:
+    #                 current_condition = current_element
+    #                 current_element, count_i = getSubstr(current_condition, expression[i+2:])
+
+    #             elif current_element == ')':
+    #                 # line = 't,f,t,f'
+    #                 if condition == '!':
+    #                     return not res, i + 3
                     
-                    else:
-                        return res, i + 3
-                elif expression[i] == ',':
-                    i += 1
-                    continue
+    #                 else:
+    #                     return res, i + 3
+    #             elif expression[i] == ',':
+    #                 i += 1
+    #                 continue
 
-                if current_element in ['t', 'f']:
-                    current_element = convert_to_bool(current_element)
+    #             if current_element in ['t', 'f']:
+    #                 current_element = convert_to_bool(current_element)
 
-                if res is not None:
-                    if condition == '|':
-                        res |= current_element
-                    else:
-                        res &= current_element
-                else:
-                    res = current_element
-                i += count_i
+    #             if res is not None:
+    #                 if condition == '|':
+    #                     res |= current_element
+    #                 else:
+    #                     res &= current_element
+    #             else:
+    #                 res = current_element
+    #             i += count_i
 
-            return res, i
+    #         return res, i
 
-        res, _ = getSubstr('', expression)
-        return res
+    #     res, _ = getSubstr('', expression)
+    #     return res
 
 
 solution = Solution()
