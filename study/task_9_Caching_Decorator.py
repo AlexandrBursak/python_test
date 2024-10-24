@@ -5,16 +5,14 @@ def cached(func):
 
     @wraps(func)
     def wrapper(*args, **kwargs):
-        print(args, kwargs)
-        # x, y, z = args
         hash_of_dict = (args, frozenset(kwargs.items()))
-        print('kwargs.items()', kwargs.items())
-        print('hash_of_dict', hash_of_dict)
+        # print('kwargs.items()', kwargs.items())
+        # print('hash_of_dict', hash_of_dict)
         if hash_of_dict not in cached_dict:
-            print('get result and save to cache')
+            # print('get result and save to cache')
             cached_dict[hash_of_dict] = func(*args, **kwargs)
         
-        print('get from cache')
+        # print('get from cache')
         return cached_dict[hash_of_dict]
 
     return wrapper
